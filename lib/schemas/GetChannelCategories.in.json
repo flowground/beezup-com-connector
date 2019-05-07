@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "channelId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "Accept_Encoding": {
+            "required": true,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}

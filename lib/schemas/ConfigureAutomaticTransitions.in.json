@@ -1,0 +1,49 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "automaticTransitions": {
+                    "items": {
+                        "properties": {
+                            "accountId": {
+                                "description": "The marketplace account identifier in BeezUP. This account identifier is based on your api settings.",
+                                "example": 1234,
+                                "format": "int32",
+                                "type": "integer"
+                            },
+                            "enabled": {
+                                "example": false,
+                                "type": "boolean"
+                            },
+                            "marketplaceTechnicalCode": {
+                                "description": "The technical code of the marketplace.",
+                                "example": "Amazon",
+                                "type": "string",
+                                "x-lov": "OMMarketplaceTechnicalCode"
+                            },
+                            "orderStatusTransitionId": {
+                                "example": 1234,
+                                "format": "int32",
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "marketplaceTechnicalCode",
+                            "accountId",
+                            "orderStatusTransitionId",
+                            "enabled"
+                        ],
+                        "type": "object"
+                    },
+                    "minLength": 1,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "automaticTransitions"
+            ],
+            "type": "object"
+        }
+    }
+}

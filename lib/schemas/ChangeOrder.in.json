@@ -1,0 +1,50 @@
+{
+    "type": "object",
+    "properties": {
+        "marketplaceTechnicalCode": {
+            "required": true,
+            "type": "string"
+        },
+        "accountId": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        },
+        "beezUPOrderId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "changeOrderType": {
+            "required": true,
+            "type": "string"
+        },
+        "userName": {
+            "required": true,
+            "type": "string"
+        },
+        "testMode": {
+            "required": false,
+            "type": "boolean",
+            "default": false
+        },
+        "requestBody": {
+            "additionalProperties": {
+                "type": "string"
+            },
+            "description": "All properties with the prefix order_ are translated in the list of values /user/lov#OrderMetaInfoPosted",
+            "example": {
+                "order_Shipping_CarrierName": "La poste",
+                "order_Shipping_EstimatedDeliveryDate": "2014-09-24T09:58:00Z",
+                "order_Shipping_FulfillmentDate": "2014-09-23T09:58:00Z",
+                "order_Shipping_ShipperTrackingNumber": "1H01845163783",
+                "order_Shipping_ShippingUrl": "https://trackingpackage.com?number=1H01845163783"
+            },
+            "type": "object"
+        },
+        "If_Match": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

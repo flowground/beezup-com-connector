@@ -1,0 +1,29 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "columnId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "requestBody": {
+            "description": "The message request for the change user column name",
+            "properties": {
+                "userColumName": {
+                    "description": "Column named by the user",
+                    "example": "My SKU",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "userColumName"
+            ],
+            "type": "object"
+        }
+    }
+}

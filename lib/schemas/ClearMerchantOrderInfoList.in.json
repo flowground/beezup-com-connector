@@ -1,0 +1,64 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "orders": {
+                    "example": [
+                        {
+                            "accountId": 1234,
+                            "beezUPOrderId": "00000000000000000000000000000000000000000000000",
+                            "marketplaceTechnicalCode": "Amazon"
+                        },
+                        {
+                            "accountId": 5678,
+                            "beezUPOrderId": "00000000000000000000000000000000000000000000000",
+                            "marketplaceTechnicalCode": "Amazon"
+                        },
+                        {
+                            "accountId": 9876,
+                            "beezUPOrderId": "00000000000000000000000000000000000000000000000",
+                            "marketplaceTechnicalCode": "Ebay"
+                        }
+                    ],
+                    "items": {
+                        "properties": {
+                            "accountId": {
+                                "description": "The marketplace account identifier in BeezUP. This account identifier is based on your api settings.",
+                                "example": 1234,
+                                "format": "int32",
+                                "type": "integer"
+                            },
+                            "beezUPOrderId": {
+                                "description": "The BeezUP Order identifier",
+                                "example": "00000000000000000000000000000000000000000000000",
+                                "format": "uuid",
+                                "type": "string"
+                            },
+                            "marketplaceTechnicalCode": {
+                                "description": "The technical code of the marketplace.",
+                                "example": "Amazon",
+                                "type": "string",
+                                "x-lov": "OMMarketplaceTechnicalCode"
+                            }
+                        },
+                        "required": [
+                            "marketplaceTechnicalCode",
+                            "accountId",
+                            "beezUPOrderId"
+                        ],
+                        "type": "object"
+                    },
+                    "maxItems": 100,
+                    "minItems": 1,
+                    "type": "array",
+                    "uniqueItems": true
+                }
+            },
+            "required": [
+                "orders"
+            ],
+            "type": "object"
+        }
+    }
+}

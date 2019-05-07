@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "sku": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

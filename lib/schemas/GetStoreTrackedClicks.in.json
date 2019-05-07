@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "count": {
+            "required": false,
+            "type": "integer",
+            "minimum": 5,
+            "maximum": 100,
+            "default": 100
+        }
+    }
+}

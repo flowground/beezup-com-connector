@@ -1,0 +1,19 @@
+{
+    "type": "object",
+    "properties": {
+        "marketplaceTechnicalCode": {
+            "required": true,
+            "type": "string"
+        },
+        "accountId": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        },
+        "beezUPOrderId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        }
+    }
+}

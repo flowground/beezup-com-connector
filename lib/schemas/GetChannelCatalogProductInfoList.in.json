@@ -1,0 +1,152 @@
+{
+    "type": "object",
+    "properties": {
+        "channelCatalogId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "requestBody": {
+            "properties": {
+                "catalogCategoryFilter": {
+                    "properties": {
+                        "categoryPath": {
+                            "description": "Indicates on which catalog category path you want to make the filter",
+                            "example": [
+                                "Maison",
+                                "Chambre"
+                            ],
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                },
+                "channelCategoryFilter": {
+                    "properties": {
+                        "categoryPath": {
+                            "description": "Indicates on which channel category path you want to make the filter",
+                            "example": [
+                                "Home",
+                                "Bedroom"
+                            ],
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                },
+                "criteria": {
+                    "properties": {
+                        "disabled": {
+                            "description": "Search disabled products. If null the filter will not be taken in account.",
+                            "example": false,
+                            "type": "boolean"
+                        },
+                        "excluded": {
+                            "description": "Search excluded products by at least an exclusion filter. If null the filter will not be taken in account.",
+                            "example": false,
+                            "type": "boolean"
+                        },
+                        "exist": {
+                            "description": "If false, search for products absent from the current catalog. If true, search for products currently in the catalog. If null the filter will not be taken in account.",
+                            "example": true,
+                            "type": "boolean"
+                        },
+                        "logic": {
+                            "description": "Indicate how you want to combine the filters:\n* funnel: You will get the products which meet at least one of the product set criterion. The criteria are applied in the following order:\n  - categorization\n  - exclusion filters\n  - deactivations\n* cumulative: You will get the products which have all the product set criteria\n",
+                            "enum": [
+                                "funnel",
+                                "cumulative"
+                            ],
+                            "type": "string"
+                        },
+                        "uncategorized": {
+                            "description": "Search product WITHOUT category mapped with the channel. If null the filter will not be taken in account.",
+                            "example": false,
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [
+                        "logic"
+                    ],
+                    "type": "object"
+                },
+                "overridden": {
+                    "description": "Search overridden products. If null the filter will not be taken in account.",
+                    "example": true,
+                    "type": "boolean"
+                },
+                "pageNumber": {
+                    "example": 1,
+                    "format": "int32",
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "example": 100,
+                    "format": "int32",
+                    "minimum": 100,
+                    "type": "integer"
+                },
+                "productFilters": {
+                    "properties": {
+                        "additionalProductFilters": {
+                            "additionalProperties": {
+                                "example": {
+                                    "672644c7-5bd0-4e25-88c1-1f732bda5e4c": {
+                                        "operatorName": "GreaterTo",
+                                        "values": [
+                                            100
+                                        ]
+                                    }
+                                },
+                                "properties": {
+                                    "operatorName": {
+                                        "description": "Indicate the operator you want to make on the columnId",
+                                        "type": "string",
+                                        "x-lov": "ProductColumnFilterOperatorName"
+                                    },
+                                    "values": {
+                                        "description": "Must be null if the operator is \"IsNull\" or \"IsNotNull\".\nCan contains multiple value in case of \"InList\" operator. Otherwise a single value is expected.\n",
+                                        "example": [
+                                            "My value"
+                                        ],
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "type": "array"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "description": "Describe a filter on a product's column.\nThe key is the column identifier of your catalog or a custom column.\n",
+                            "type": "object"
+                        },
+                        "sku": {
+                            "description": "The product sku filter",
+                            "example": "M1234",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "The product title filter",
+                            "example": "RefrigÃ©rateur",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "required": [
+                "pageNumber",
+                "pageSize",
+                "criteria"
+            ],
+            "type": "object"
+        }
+    }
+}

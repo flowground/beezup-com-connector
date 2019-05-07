@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "channelCatalogId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "pageNumber": {
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "minimum": 1
+        },
+        "pageSize": {
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "minimum": 25,
+            "maximum": 100
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+        "pageNumber": {
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "minimum": 1
+        },
+        "pageSize": {
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "minimum": 25,
+            "maximum": 100
+        },
+        "storeId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "If_None_Match": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

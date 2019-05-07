@@ -1,0 +1,37 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "catalogCategoryId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "actionName": {
+            "required": true,
+            "type": "string",
+            "format": "optimisationActionName",
+            "enum": [
+                "reenable",
+                "disable"
+            ]
+        },
+        "requestBody": {
+            "example": [
+                "a2d38563-50f0-43f1-be2b-b16e7ec4f007"
+            ],
+            "items": {
+                "format": "guid",
+                "type": "string"
+            },
+            "maxItems": 1,
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+        }
+    }
+}

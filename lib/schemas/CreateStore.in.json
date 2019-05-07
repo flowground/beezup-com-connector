@@ -1,0 +1,54 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "The request to create a store. The store identifier is optional, if null it will be automatically computed.",
+            "properties": {
+                "countryIsoCodeAlpha3": {
+                    "description": "The country iso code alpha 3 based on the list of values /user/lov/StoreCountry",
+                    "example": "DEU",
+                    "type": "string",
+                    "x-lov": "StoreCountry"
+                },
+                "id": {
+                    "description": "The store identifier",
+                    "example": "64f43358-63a1-47f7-97ec-0301fc39956b",
+                    "format": "guid",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The store name. Must be unique.",
+                    "example": "My Store",
+                    "type": "string"
+                },
+                "sectors": {
+                    "description": "The store's sectors based on the list of values /user/lov/ParamSector",
+                    "example": [
+                        "ANIMALERIE",
+                        "AUTOMOTO"
+                    ],
+                    "items": {
+                        "description": "The store's sector based on the list of values /user/lov/ParamSector",
+                        "example": "ANIMALERIE",
+                        "type": "string",
+                        "x-lov": "ParamSector"
+                    },
+                    "type": "array"
+                },
+                "url": {
+                    "description": "The url of your store",
+                    "example": "http://www.mystore.com",
+                    "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "url",
+                "countryIsoCodeAlpha3",
+                "sectors"
+            ],
+            "type": "object"
+        }
+    }
+}

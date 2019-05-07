@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "pageNumber": {
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "default": 1
+        },
+        "pageSize": {
+            "required": true,
+            "type": "integer",
+            "minimum": 10,
+            "maximum": 100,
+            "default": 10
+        }
+    }
+}

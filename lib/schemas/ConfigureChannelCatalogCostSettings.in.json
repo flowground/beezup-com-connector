@@ -1,0 +1,37 @@
+{
+    "type": "object",
+    "properties": {
+        "channelCatalogId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "requestBody": {
+            "description": "If this property is not indicated please force the user to configure the cost settings.\nDefines the cost type you have on this channel with the cost value.\n",
+            "properties": {
+                "costType": {
+                    "description": "CPC means cost per click.\nCPA means cost per action.\nYou can have CPC/CPA with a global cost value.\nYou can have CPC/CPA by category the cost value MUST be null\nYou can have global fixed price.\n",
+                    "enum": [
+                        "CPC_Global",
+                        "CPA_Global",
+                        "CPC_ByCategory",
+                        "CPA_ByCategory",
+                        "Fixed_Global"
+                    ],
+                    "example": "Fixed_Global",
+                    "type": "string"
+                },
+                "globalCostValue": {
+                    "description": "In case of global cost type, you have to indicate the cost value.",
+                    "example": 10.21,
+                    "format": "decimal",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "costType"
+            ],
+            "type": "object"
+        }
+    }
+}

@@ -1,0 +1,73 @@
+{
+    "type": "object",
+    "properties": {
+        "channelCatalogId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "requestBody": {
+            "description": "The request message to make a mapping between catalog category path and a channel category path",
+            "properties": {
+                "channelCatalogCategories": {
+                    "items": {
+                        "description": "Represent a mapping between a catalog category path and a channel category path.\nThe cost on this mapping can be applied.\n",
+                        "properties": {
+                            "autoMapNewSubCategories": {
+                                "description": "Great feature! In case of mapping to parent catalog category, you can ask to automatically map new sub catalog category in the next importation to this channel category path.",
+                                "example": true,
+                                "type": "boolean"
+                            },
+                            "catalogCategoryPath": {
+                                "description": "The catalog category path",
+                                "example": [
+                                    "VÃªtements",
+                                    "Femmes",
+                                    "Chaussures"
+                                ],
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            "channelCategoryPath": {
+                                "description": "The channel category path",
+                                "example": [
+                                    "Clothing",
+                                    "Women",
+                                    "Shoes"
+                                ],
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            "costValue": {
+                                "description": "In case of CPC_ByCategory or CPA_ByCategory cost type, you have to indicate the cost value.",
+                                "example": 10.21,
+                                "format": "decimal",
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "autoMapNewSubCategories",
+                            "catalogCategoryPath"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "overrideSubCategoryMappings": {
+                    "description": "Great feature! In case of mapping to parent channel category, you can ask to override the mapping of all sub channel category to this catalog category path",
+                    "example": true,
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "overrideSubCategoryMappings",
+                "channelCatalogCategories"
+            ],
+            "type": "object"
+        }
+    }
+}

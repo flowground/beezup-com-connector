@@ -1,0 +1,33 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "executionId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "columnId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "requestBody": {
+            "properties": {
+                "beezUPColumnName": {
+                    "description": "The BeezUP column name",
+                    "example": "CategoryFirstLevel",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "beezUPColumnName"
+            ],
+            "type": "object"
+        }
+    }
+}

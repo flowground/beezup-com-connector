@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "channelId": {
+                    "description": "The channel identifier",
+                    "example": "2dc136a7-0d3d-4cc9-a825-a28a42c53e28",
+                    "format": "guid",
+                    "type": "string"
+                },
+                "storeId": {
+                    "description": "The store identifier",
+                    "example": "64f43358-63a1-47f7-97ec-0301fc39956b",
+                    "format": "guid",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "channelId",
+                "storeId"
+            ],
+            "type": "object"
+        }
+    }
+}

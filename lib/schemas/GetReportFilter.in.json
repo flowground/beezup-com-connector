@@ -1,0 +1,15 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "reportFilterId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        }
+    }
+}

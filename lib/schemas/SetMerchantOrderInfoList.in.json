@@ -1,0 +1,96 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "order_MerchantECommerceSoftwareName": {
+                    "description": "The e-commerce software name of the merchant",
+                    "example": "Prestashop",
+                    "type": "string"
+                },
+                "order_MerchantECommerceSoftwareVersion": {
+                    "description": "The e-commece software version of the merchant",
+                    "example": "123.0.1",
+                    "type": "string"
+                },
+                "orders": {
+                    "example": [
+                        {
+                            "accountId": 1234,
+                            "beezUPOrderId": "8D47FF1427A26B064ca98e95f644361ada5a5be0bbb3b53",
+                            "marketplaceTechnicalCode": "Amazon",
+                            "order_MerchantOrderId": "BX1234"
+                        },
+                        {
+                            "accountId": 5678,
+                            "beezUPOrderId": "8D47FF149F213D055f26e3c413e4c9ba5c5cfda460547a4",
+                            "marketplaceTechnicalCode": "Amazon",
+                            "order_MerchantOrderId": "BX5678"
+                        },
+                        {
+                            "accountId": 9876,
+                            "beezUPOrderId": "8D47FF150217B60bdec05ab61c445d1a59e3da050b52823",
+                            "marketplaceTechnicalCode": "Ebay",
+                            "order_MerchantOrderId": "BX9876"
+                        }
+                    ],
+                    "items": {
+                        "allOf": [
+                            {
+                                "properties": {
+                                    "accountId": {
+                                        "description": "The marketplace account identifier in BeezUP. This account identifier is based on your api settings.",
+                                        "example": 1234,
+                                        "format": "int32",
+                                        "type": "integer"
+                                    },
+                                    "beezUPOrderId": {
+                                        "description": "The BeezUP Order identifier",
+                                        "example": "00000000000000000000000000000000000000000000000",
+                                        "format": "uuid",
+                                        "type": "string"
+                                    },
+                                    "marketplaceTechnicalCode": {
+                                        "description": "The technical code of the marketplace.",
+                                        "example": "Amazon",
+                                        "type": "string",
+                                        "x-lov": "OMMarketplaceTechnicalCode"
+                                    }
+                                },
+                                "required": [
+                                    "marketplaceTechnicalCode",
+                                    "accountId",
+                                    "beezUPOrderId"
+                                ],
+                                "type": "object"
+                            },
+                            {
+                                "properties": {
+                                    "order_MerchantOrderId": {
+                                        "description": "The order merchant identifier",
+                                        "example": "MyOrderMerchantId",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "order_MerchantOrderId"
+                                ],
+                                "type": "object"
+                            }
+                        ]
+                    },
+                    "maxItems": 100,
+                    "minItems": 1,
+                    "type": "array",
+                    "uniqueItems": true
+                }
+            },
+            "required": [
+                "order_MerchantECommerceSoftwareName",
+                "order_MerchantECommerceSoftwareVersion",
+                "orders"
+            ],
+            "type": "object"
+        }
+    }
+}

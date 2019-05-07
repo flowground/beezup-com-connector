@@ -1,0 +1,44 @@
+{
+    "type": "object",
+    "properties": {
+        "marketplaceTechnicalCode": {
+            "required": true,
+            "type": "string"
+        },
+        "accountId": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        },
+        "beezUPOrderId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "requestBody": {
+            "properties": {
+                "order_MerchantECommerceSoftwareName": {
+                    "description": "The e-commerce software name of the merchant",
+                    "example": "Prestashop",
+                    "type": "string"
+                },
+                "order_MerchantECommerceSoftwareVersion": {
+                    "description": "The e-commece software version of the merchant",
+                    "example": "123.0.1",
+                    "type": "string"
+                },
+                "order_MerchantOrderId": {
+                    "description": "The order merchant identifier",
+                    "example": "MyOrderMerchantId",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "order_MerchantOrderId",
+                "order_MerchantECommerceSoftwareName",
+                "order_MerchantECommerceSoftwareVersion"
+            ],
+            "type": "object"
+        }
+    }
+}

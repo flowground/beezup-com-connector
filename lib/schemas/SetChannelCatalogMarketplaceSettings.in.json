@@ -1,0 +1,119 @@
+{
+    "type": "object",
+    "properties": {
+        "channelCatalogId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "requestBody": {
+            "description": "The channel catalog marketplace settings to save",
+            "properties": {
+                "settings": {
+                    "example": [
+                        {
+                            "name": "Country",
+                            "values": [
+                                "FR"
+                            ]
+                        },
+                        {
+                            "name": "Currency",
+                            "values": [
+                                "EUR"
+                            ]
+                        },
+                        {
+                            "name": "ListingDuration",
+                            "values": [
+                                "GTC"
+                            ]
+                        },
+                        {
+                            "name": "PaymentMethods",
+                            "values": [
+                                "CCAccepted"
+                            ]
+                        },
+                        {
+                            "name": "PayPalEmailAddress",
+                            "values": [
+                                "pascal@ixeoline.com"
+                            ]
+                        },
+                        {
+                            "name": "PostalCode",
+                            "values": [
+                                "69630"
+                            ]
+                        },
+                        {
+                            "name": "RefundOption",
+                            "values": [
+                                "MoneyBackOrExchange"
+                            ]
+                        },
+                        {
+                            "name": "ReturnsAcceptedOption",
+                            "values": [
+                                "ReturnsAccepted"
+                            ]
+                        },
+                        {
+                            "name": "ReturnsWithinOption",
+                            "values": [
+                                "Days_10"
+                            ]
+                        },
+                        {
+                            "name": "ShippingCostPaidByOption",
+                            "values": [
+                                "Buyer"
+                            ]
+                        },
+                        {
+                            "name": "ShippingService",
+                            "values": [
+                                "FR_ColiposteColissimo"
+                            ]
+                        }
+                    ],
+                    "items": {
+                        "description": "Model for fetching a channel catalog marketplace setting",
+                        "discriminator": {
+                            "propertyName": "discriminatorType"
+                        },
+                        "properties": {
+                            "discriminatorType": {
+                                "enum": [
+                                    "channelCatalogMarketplaceStringSetting",
+                                    "channelCatalogMarketplaceIntegerSetting",
+                                    "channelCatalogMarketplaceBooleanSetting",
+                                    "channelCatalogMarketplaceNumberSetting"
+                                ],
+                                "example": "string",
+                                "type": "string"
+                            },
+                            "name": {
+                                "description": "Channel catalog marketplace property name",
+                                "example": "PaypalAddress",
+                                "type": "string",
+                                "x-lov": "MarketplaceStoreProperty"
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "discriminatorType"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "settings"
+            ],
+            "type": "object"
+        }
+    }
+}

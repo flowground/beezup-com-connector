@@ -1,0 +1,37 @@
+{
+    "type": "object",
+    "properties": {
+        "channelCatalogId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "requestBody": {
+            "description": "Represents the general settings of your channel catalog",
+            "properties": {
+                "acceptToPublishInfo": {
+                    "description": "If true then you authorize disclosure of my statistics generated from clicks and sales",
+                    "example": true,
+                    "type": "boolean"
+                },
+                "activeBeezUPTracking": {
+                    "default": true,
+                    "description": "Activate BeezUP tracking for my statistics (checked by default)",
+                    "example": true,
+                    "type": "boolean"
+                },
+                "doNotExportOutOfStockProducts": {
+                    "description": "Do not export \"out of stock\" products. Note: this option is not taken into account by the counter.\n",
+                    "example": true,
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "acceptToPublishInfo",
+                "doNotExportOutOfStockProducts",
+                "activeBeezUPTracking"
+            ],
+            "type": "object"
+        }
+    }
+}

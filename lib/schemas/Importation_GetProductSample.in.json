@@ -1,0 +1,22 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "executionId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "productSampleIndex": {
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 99
+        }
+    }
+}

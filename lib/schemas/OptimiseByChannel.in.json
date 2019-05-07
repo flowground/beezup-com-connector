@@ -1,0 +1,24 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "channelId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "actionName": {
+            "required": true,
+            "type": "string",
+            "format": "optimisationActionName",
+            "enum": [
+                "reenable",
+                "disable"
+            ]
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "requestBody": {
+            "description": "Copy the optimisation between 2 channels",
+            "properties": {
+                "channelIdSource": {
+                    "description": "The channel identifier",
+                    "example": "2dc136a7-0d3d-4cc9-a825-a28a42c53e28",
+                    "format": "guid",
+                    "type": "string"
+                },
+                "channelIdTarget": {
+                    "description": "The channel identifier",
+                    "example": "2dc136a7-0d3d-4cc9-a825-a28a42c53e28",
+                    "format": "guid",
+                    "type": "string"
+                },
+                "keepExistingOptimisation": {
+                    "description": "If true the existing optimisation will be kept",
+                    "example": false,
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "channelIdSource",
+                "channelIdTarget",
+                "keepExistingOptimisation"
+            ],
+            "type": "object"
+        }
+    }
+}

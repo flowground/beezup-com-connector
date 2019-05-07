@@ -1,0 +1,97 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "requestBody": {
+            "description": "The request message to get products based on these filters",
+            "properties": {
+                "categoryPath": {
+                    "description": "The catalog category path",
+                    "example": [
+                        "VÃªtements",
+                        "Femmes",
+                        "Chaussures"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "columnIdList": {
+                    "items": {
+                        "description": "The catalog column identifier (catalog or custom column)",
+                        "example": "bea7c21e-948b-4ac3-9ffd-4396e62c4163",
+                        "format": "guid",
+                        "type": "string"
+                    },
+                    "maxItems": 5,
+                    "minItems": 1,
+                    "type": "array"
+                },
+                "exists": {
+                    "description": "Search for existing products or not. If null you will received both.",
+                    "example": true,
+                    "type": "boolean"
+                },
+                "orderbyCatalogColumnId": {
+                    "description": "The catalog column identifier (catalog or custom column)",
+                    "example": "bea7c21e-948b-4ac3-9ffd-4396e62c4163",
+                    "format": "guid",
+                    "type": "string"
+                },
+                "pageNumber": {
+                    "default": 1,
+                    "description": "Indicates the page number",
+                    "example": 1,
+                    "format": "int32",
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "default": 100,
+                    "description": "Indicate the item count per page",
+                    "example": 100,
+                    "format": "int32",
+                    "maximum": 100,
+                    "minimum": 25,
+                    "type": "integer"
+                },
+                "productIdList": {
+                    "description": "Filter with a list of product identifier",
+                    "items": {
+                        "description": "The product identifier",
+                        "example": "578419df-1bbf-41a6-96fa-862e42182b67",
+                        "format": "guid",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "sku": {
+                    "description": "Search for products containing this SKU (merchant product dentifier).",
+                    "example": "MySku123",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Search for products containing this title",
+                    "example": "Frigo",
+                    "type": "string"
+                },
+                "withoutSubCategories": {
+                    "description": "Do not retrieve sub categories. By default, this value is set to false",
+                    "example": false,
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "pageNumber",
+                "pageSize",
+                "columnIdList"
+            ],
+            "type": "object"
+        }
+    }
+}

@@ -1,0 +1,62 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "accountingEmails": {
+                    "description": "Your company accounting emails",
+                    "example": [
+                        "myaccountemail@mysupercompany.com"
+                    ],
+                    "items": {
+                        "description": "The email",
+                        "example": "paulsimon@mysupercompany.com",
+                        "format": "email",
+                        "pattern": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "address": {
+                    "description": "Your address",
+                    "example": "21 jump street",
+                    "type": "string"
+                },
+                "city": {
+                    "description": "Your address city",
+                    "example": "New-York",
+                    "type": "string"
+                },
+                "company": {
+                    "description": "Your company name",
+                    "example": "My super company",
+                    "type": "string"
+                },
+                "countryIsoCodeAlpha3": {
+                    "description": "The country iso code alpha 3 <a href=\"https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3\">(ISO 3166-1_alpha-3)</a>",
+                    "example": "FRA",
+                    "type": "string",
+                    "x-lov": "Country"
+                },
+                "postalCode": {
+                    "description": "Your address postal code",
+                    "example": 13014,
+                    "type": "string"
+                },
+                "vatNumber": {
+                    "description": "Your company VATNumber. Used for french company. This number is checked with official web service before being saved.",
+                    "example": 1234567890,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "company",
+                "address",
+                "postalCode",
+                "city",
+                "countryIsoCodeAlpha3"
+            ],
+            "type": "object"
+        }
+    }
+}

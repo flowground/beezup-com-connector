@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": false,
+            "type": "string",
+            "format": "guid"
+        }
+    }
+}

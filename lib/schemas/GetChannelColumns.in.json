@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "channelId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "requestBody": {
+            "items": {
+                "description": "The channel column identifier",
+                "example": "8a76f06a-fefc-4c0d-bcfe-b210f1482977",
+                "format": "guid",
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "Accept_Encoding": {
+            "required": true,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}

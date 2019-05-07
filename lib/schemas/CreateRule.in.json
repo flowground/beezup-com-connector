@@ -1,0 +1,52 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "requestBody": {
+            "properties": {
+                "endUtcDate": {
+                    "description": "The end validity utc date of the rule",
+                    "example": "2017-09-30T10:42:40.001Z",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "optimisationActionName": {
+                    "description": "The optimisation action",
+                    "enum": [
+                        "reenable",
+                        "disable"
+                    ],
+                    "example": "reenable",
+                    "type": "string"
+                },
+                "reportFilterId": {
+                    "description": "The report filter to use for the rule",
+                    "example": "fb19c53c-2f63-4262-9d94-2d7faa500acd",
+                    "format": "guid",
+                    "type": "string"
+                },
+                "ruleName": {
+                    "description": "The name of the rule",
+                    "example": "My rule",
+                    "type": "string"
+                },
+                "startUtcDate": {
+                    "description": "The start validity utc date of the rule",
+                    "example": "2016-08-29T09:12:33.001Z",
+                    "format": "date-time",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "optimisationActionName",
+                "ruleName",
+                "reportFilterId"
+            ],
+            "type": "object"
+        }
+    }
+}

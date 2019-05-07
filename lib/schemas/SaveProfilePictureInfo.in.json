@@ -1,0 +1,29 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "profilePictureSelected": {
+                    "description": "Your profile picture choice about usage of gravatar picture, initials picture or uploaded picture.",
+                    "enum": [
+                        "gravatar",
+                        "initials",
+                        "uploaded"
+                    ],
+                    "example": "initials",
+                    "type": "string"
+                },
+                "profilePictureUrl": {
+                    "description": "Indicate the url of your picture profil",
+                    "example": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Marlon_Brando_%28cropped%29.jpg/220px-Marlon_Brando_%28cropped%29.jpg",
+                    "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "profilePictureSelected"
+            ],
+            "type": "object"
+        }
+    }
+}

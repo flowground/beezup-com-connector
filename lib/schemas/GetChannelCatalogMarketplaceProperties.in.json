@@ -1,0 +1,22 @@
+{
+    "type": "object",
+    "properties": {
+        "channelCatalogId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "redirectionPageUrl": {
+            "required": true,
+            "type": "string",
+            "format": "uri"
+        },
+        "Accept_Language": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}

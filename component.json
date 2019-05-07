@@ -1,0 +1,2972 @@
+{
+    "title": "BeezUP",
+    "description": "# The REST API of BeezUP system\n## Overview\nThe REST APIs provide programmatic access to read and write BeezUP data. \nBasically, with this API you will be able to do everything like you were with your browser on https://go.beezup.com !\n\nThe main features are:\n- Register and manage your account\n- Create and manage and share your stores with your friends/co-workers.\n- Import your product catalog and schedule the auto importation\n- Search the channels your want to use\n- Configure your channels for your catalogs to export your product information:\n    - cost and general settings\n    - category and columns mappings\n    - your will be able to create and manage your custom column\n    - put in place exlusion filters based on simple conditions on your product data\n    - override product values\n    - get product vision for a channel catalog scope\n- Analyze and optimize your performance of your catalogs on all yours channels with different type of reportings by day, channel, category and by product.\n- Automatize your optimisation by using rules!\n- And of course... Manage your orders harvested from all your marketplaces:\n    - Synchronize your orders in an uniformized way\n    - Get the available actions and update the order status\n- ...and more!\n\n## Authentication credentials\nThe public API with the base path **/v2/public** have been put in place to give you an entry point to our system for the user registration, login and lost password. The public API does not require any credentials.\nWe give you the some public list of values and public channels for our public commercial web site [www.beezup.com](http://www.beezup.com).\n\nThe user API with the base path **/v2/user** requires a token which is available on this page:\nhttps://go.beezup.com/Account/MyAccount\n\n## Things to keep in mind\n### API Rate Limits\n- The BeezUP REST API is limited to 100 calls/minute.\n\n### Media type\nThe default media type for requests and responses is application/json. Where noted, some operations support other content types. If no additional content type is mentioned for a specific operation, then the media type is application/json.\n\n### Required content type\nThe required and default encoding for the request and responses is UTF8.\n\n### Required date time format\nAll our date time are formatted in ISO 8601 format: 2014-06-24T16:25:00Z.\n\n### Base URL\nThe Base URL of the BeezUP API Order Management REST API conforms to the following template.\n\nhttps://api.beezup.com\n\nAll URLs returned by the BeezUP API are relative to this base URL, and all requests to the REST API must use this base URL template.\n\nYou can test our API on https://api-docs.beezup.com/swagger-ui\\\nYou can contact us on [gitter, #BeezUP/API](https://gitter.im/BeezUP/API)\n",
+    "docsUrl": "https://api-docs.beezup.com/",
+    "url": "https://api.apis.guru/v2/specs/beezup.com/2.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.beezup.com/v2",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "api_key": {
+                "label": "Ocp-Apim-Subscription-Key (api_key)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "GetChannelsIndex": {
+            "main": "./lib/actions/GetChannelsIndex.js",
+            "title": "Get public channel index",
+            "description": "Use this operation to get the correct link to the channels and to the list of values",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelsIndex.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannels": {
+            "main": "./lib/actions/GetChannels.js",
+            "title": "The channel list for one country",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannels.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetPublicLovIndex": {
+            "main": "./lib/actions/GetPublicLovIndex.js",
+            "title": "Get all list names",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetPublicLovIndex.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetPublicListOfValues": {
+            "main": "./lib/actions/GetPublicListOfValues.js",
+            "title": "Get the list of values related to this list name",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetPublicListOfValues.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Login": {
+            "main": "./lib/actions/Login.js",
+            "title": "Login",
+            "description": "User Login - The login will give your tokens",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Login.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LostPassword": {
+            "main": "./lib/actions/LostPassword.js",
+            "title": "Lost password",
+            "description": "Lost password - Your password will be regenerated and sent to your email",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LostPassword.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Register": {
+            "main": "./lib/actions/Register.js",
+            "title": "User Registration",
+            "description": "User Registration - Create a new user on BeezUP",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Register.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AnalyticsIndex": {
+            "main": "./lib/actions/AnalyticsIndex.js",
+            "title": "Get the Analytics API operation index",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AnalyticsIndex.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetTrackingStatus": {
+            "main": "./lib/actions/GetTrackingStatus.js",
+            "title": "Get the global synchronization status of clicks and orders",
+            "description": "Clicks and orders are eventually consistent. \\\nThis operation gets the current global state of projections.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetTrackingStatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AnalyticsStoreIndex": {
+            "main": "./lib/actions/AnalyticsStoreIndex.js",
+            "title": "Get the Analytics API operation index for one store",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AnalyticsStoreIndex.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "OptimiseAll": {
+            "main": "./lib/actions/OptimiseAll.js",
+            "title": "Optimise all products",
+            "description": "/!\\ WARNING /!\\ \\\nApply the operation on every product related to this request. \\\nThis operation is used at the bottom of the analytics page result.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/OptimiseAll.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "OptimiseByCategory": {
+            "main": "./lib/actions/OptimiseByCategory.js",
+            "title": "Optimise products by category",
+            "description": "/!\\ WARNING /!\\ \\\nThis operation will reenable or disable products's category for every channel indicated in the body.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/OptimiseByCategory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "OptimiseByChannel": {
+            "main": "./lib/actions/OptimiseByChannel.js",
+            "title": "Optimise products by channel",
+            "description": "/!\\ WARNING /!\\ \\\nApply the operation on every product on this channel.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/OptimiseByChannel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "OptimiseByProduct": {
+            "main": "./lib/actions/OptimiseByProduct.js",
+            "title": "Optimise product",
+            "description": "/!\\ WARNING /!\\ \\\nThis operation will reenable or disable this product for every channel indicated in the body.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/OptimiseByProduct.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CopyOptimisation": {
+            "main": "./lib/actions/CopyOptimisation.js",
+            "title": "Copy product optimisations between 2 channels",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CopyOptimisation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Optimise": {
+            "main": "./lib/actions/Optimise.js",
+            "title": "Optimise products by page",
+            "description": "/!\\ WARNING /!\\ \\\nApply the operation on every product related to this request. \\\nThis operation is used at the bottom of the analytics page result.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Optimise.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetStoreReportByCategory": {
+            "main": "./lib/actions/GetStoreReportByCategory.js",
+            "title": "Get the report by category",
+            "description": "Get the report by category",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetStoreReportByCategory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetStoreReportByChannel": {
+            "main": "./lib/actions/GetStoreReportByChannel.js",
+            "title": "Get the report by channel",
+            "description": "Get the report by channel",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetStoreReportByChannel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetStoreReportByDay": {
+            "main": "./lib/actions/GetStoreReportByDay.js",
+            "title": "Get the report by day",
+            "description": "Get the report by day",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetStoreReportByDay.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetStoreReportByProduct": {
+            "main": "./lib/actions/GetStoreReportByProduct.js",
+            "title": "Get the report by product",
+            "description": "Get the report by product",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetStoreReportByProduct.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetReportFilters": {
+            "main": "./lib/actions/GetReportFilters.js",
+            "title": "Get report filter list for the given store",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetReportFilters.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteReportFilter": {
+            "main": "./lib/actions/DeleteReportFilter.js",
+            "title": "Delete the report filter",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteReportFilter.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetReportFilter": {
+            "main": "./lib/actions/GetReportFilter.js",
+            "title": "Get the report filter description",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetReportFilter.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SaveReportFilter": {
+            "main": "./lib/actions/SaveReportFilter.js",
+            "title": "Save the report filter",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SaveReportFilter.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetRules": {
+            "main": "./lib/actions/GetRules.js",
+            "title": "Gets the list of rules for a given store",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetRules.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateRule": {
+            "main": "./lib/actions/CreateRule.js",
+            "title": "Rule creation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetRulesExecutions": {
+            "main": "./lib/actions/GetRulesExecutions.js",
+            "title": "Get the rules execution history",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetRulesExecutions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RunRules": {
+            "main": "./lib/actions/RunRules.js",
+            "title": "Run all rules for this store",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RunRules.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteRule": {
+            "main": "./lib/actions/DeleteRule.js",
+            "title": "Delete Rule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetRule": {
+            "main": "./lib/actions/GetRule.js",
+            "title": "Gets the rule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateRule": {
+            "main": "./lib/actions/UpdateRule.js",
+            "title": "Update Rule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DisableRule": {
+            "main": "./lib/actions/DisableRule.js",
+            "title": "Disable rule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DisableRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnableRule": {
+            "main": "./lib/actions/EnableRule.js",
+            "title": "Enable rule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnableRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "MoveDownRule": {
+            "main": "./lib/actions/MoveDownRule.js",
+            "title": "Move the rule down",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/MoveDownRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "MoveUpRule": {
+            "main": "./lib/actions/MoveUpRule.js",
+            "title": "Move the rule up",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/MoveUpRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RunRule": {
+            "main": "./lib/actions/RunRule.js",
+            "title": "Run rule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RunRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetStoreTrackedClicks": {
+            "main": "./lib/actions/GetStoreTrackedClicks.js",
+            "title": "Get the latest tracked clicks",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetStoreTrackedClicks.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetStoreTrackedExternalOrders": {
+            "main": "./lib/actions/GetStoreTrackedExternalOrders.js",
+            "title": "Get the latest tracked external orders",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetStoreTrackedExternalOrders.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetStoreTrackedOrders": {
+            "main": "./lib/actions/GetStoreTrackedOrders.js",
+            "title": "Get the latest tracked orders",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetStoreTrackedOrders.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetStoreTrackingStatus": {
+            "main": "./lib/actions/GetStoreTrackingStatus.js",
+            "title": "Get the synchronization status of clicks and orders of a store",
+            "description": "Clicks and orders are eventually consistent. \\\nThis operation gets the current state of projections for a store.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetStoreTrackingStatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CatalogIndex": {
+            "main": "./lib/actions/CatalogIndex.js",
+            "title": "Get the index of the catalog API",
+            "description": "The operation will give you all the operations you will be able to do and all the LOV used in this API.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CatalogIndex.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Catalog_GetBeezUPColumns": {
+            "main": "./lib/actions/Catalog_GetBeezUPColumns.js",
+            "title": "Get the BeezUP columns",
+            "description": "Get the BeezUP columns, this columns are used for mapping during the manual catalog importation process.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Catalog_GetBeezUPColumns.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CatalogStoreIndex": {
+            "main": "./lib/actions/CatalogStoreIndex.js",
+            "title": "Get the index of the catalog API for this store",
+            "description": "The operation will give you all the operations you will be able to do on this store for this API.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CatalogStoreIndex.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Auto_DeleteAutoImport": {
+            "main": "./lib/actions/Auto_DeleteAutoImport.js",
+            "title": "Delete Auto Import",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Auto_DeleteAutoImport.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Auto_GetAutoImportConfiguration": {
+            "main": "./lib/actions/Auto_GetAutoImportConfiguration.js",
+            "title": "Get the auto import configuration",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Auto_GetAutoImportConfiguration.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_ActivateAutoImport": {
+            "main": "./lib/actions/Importation_ActivateAutoImport.js",
+            "title": "Activate the auto importation of the last successful manual catalog importation.",
+            "description": "Once you have made your fist manual catalog importation with success, you can call this operation to import it automatically. No parameter required, we know which one it is.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_ActivateAutoImport.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Auto_PauseAutoImport": {
+            "main": "./lib/actions/Auto_PauseAutoImport.js",
+            "title": "Pause Auto Import",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Auto_PauseAutoImport.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Auto_ResumeAutoImport": {
+            "main": "./lib/actions/Auto_ResumeAutoImport.js",
+            "title": "Resume Auto Import",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Auto_ResumeAutoImport.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Auto_ConfigureAutoImportInterval": {
+            "main": "./lib/actions/Auto_ConfigureAutoImportInterval.js",
+            "title": "Configure Auto Import Interval",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Auto_ConfigureAutoImportInterval.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Auto_ScheduleAutoImport": {
+            "main": "./lib/actions/Auto_ScheduleAutoImport.js",
+            "title": "Configure Auto Import Schedules",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Auto_ScheduleAutoImport.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Auto_StartAutoImport": {
+            "main": "./lib/actions/Auto_StartAutoImport.js",
+            "title": "Start Auto Import Manually",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Auto_StartAutoImport.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Catalog_GetCatalogColumns": {
+            "main": "./lib/actions/Catalog_GetCatalogColumns.js",
+            "title": "Get catalog column list",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Catalog_GetCatalogColumns.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Catalog_ChangeCatalogColumnUserName": {
+            "main": "./lib/actions/Catalog_ChangeCatalogColumnUserName.js",
+            "title": "Change Catalog Column User Name",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Catalog_ChangeCatalogColumnUserName.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Catalog_GetCategories": {
+            "main": "./lib/actions/Catalog_GetCategories.js",
+            "title": "Get category list",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Catalog_GetCategories.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Catalog_GetCustomColumns": {
+            "main": "./lib/actions/Catalog_GetCustomColumns.js",
+            "title": "Get custom column list",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Catalog_GetCustomColumns.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Catalog_ComputeExpression": {
+            "main": "./lib/actions/Catalog_ComputeExpression.js",
+            "title": "Compute the expression for this catalog.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Catalog_ComputeExpression.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Catalog_DeleteCustomColumn": {
+            "main": "./lib/actions/Catalog_DeleteCustomColumn.js",
+            "title": "Delete custom column",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Catalog_DeleteCustomColumn.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Catalog_SaveCustomColumn": {
+            "main": "./lib/actions/Catalog_SaveCustomColumn.js",
+            "title": "Create or replace a custom column",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Catalog_SaveCustomColumn.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Catalog_GetCustomColumnExpression": {
+            "main": "./lib/actions/Catalog_GetCustomColumnExpression.js",
+            "title": "Get the encrypted custom column expression",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Catalog_GetCustomColumnExpression.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Catalog_ChangeCustomColumnExpression": {
+            "main": "./lib/actions/Catalog_ChangeCustomColumnExpression.js",
+            "title": "Change custom column expression",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Catalog_ChangeCustomColumnExpression.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Catalog_ChangeCustomColumnUserName": {
+            "main": "./lib/actions/Catalog_ChangeCustomColumnUserName.js",
+            "title": "Change Custom Column User Name",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Catalog_ChangeCustomColumnUserName.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_GetReportings": {
+            "main": "./lib/actions/Importation_GetReportings.js",
+            "title": "Get the latest catalog importation reporting",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_GetReportings.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_StartManualUpdate": {
+            "main": "./lib/actions/Importation_StartManualUpdate.js",
+            "title": "Start Manual Import",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_StartManualUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_GetImportationMonitoring": {
+            "main": "./lib/actions/Importation_GetImportationMonitoring.js",
+            "title": "Get the importation status",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_GetImportationMonitoring.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_Cancel": {
+            "main": "./lib/actions/Importation_Cancel.js",
+            "title": "Cancel importation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_Cancel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_GetDetectedCatalogColumns": {
+            "main": "./lib/actions/Importation_GetDetectedCatalogColumns.js",
+            "title": "Get detected catalog columns during this importation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_GetDetectedCatalogColumns.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_ConfigureCatalogColumn": {
+            "main": "./lib/actions/Importation_ConfigureCatalogColumn.js",
+            "title": "Configure catalog column",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_ConfigureCatalogColumn.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_IgnoreColumn": {
+            "main": "./lib/actions/Importation_IgnoreColumn.js",
+            "title": "Ignore Column",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_IgnoreColumn.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_MapCatalogColumn": {
+            "main": "./lib/actions/Importation_MapCatalogColumn.js",
+            "title": "Map catalog column to a BeezUP column",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_MapCatalogColumn.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_ReattendColumn": {
+            "main": "./lib/actions/Importation_ReattendColumn.js",
+            "title": "Reattend Column",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_ReattendColumn.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_UnmapCatalogColumn": {
+            "main": "./lib/actions/Importation_UnmapCatalogColumn.js",
+            "title": "Unmap catalog column",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_UnmapCatalogColumn.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_Commit": {
+            "main": "./lib/actions/Importation_Commit.js",
+            "title": "Commit Importation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_Commit.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_CommitColumns": {
+            "main": "./lib/actions/Importation_CommitColumns.js",
+            "title": "Commit columns",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_CommitColumns.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_ConfigureRemainingCatalogColumns": {
+            "main": "./lib/actions/Importation_ConfigureRemainingCatalogColumns.js",
+            "title": "Configure remaining catalog columns",
+            "description": "This operation should be used after you have mapped the required BeezUP Columns",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_ConfigureRemainingCatalogColumns.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_GetCustomColumns": {
+            "main": "./lib/actions/Importation_GetCustomColumns.js",
+            "title": "Get custom columns currently place in this importation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_GetCustomColumns.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_DeleteCustomColumn": {
+            "main": "./lib/actions/Importation_DeleteCustomColumn.js",
+            "title": "Delete Custom Column",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_DeleteCustomColumn.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_SaveCustomColumn": {
+            "main": "./lib/actions/Importation_SaveCustomColumn.js",
+            "title": "Create or replace a custom column",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_SaveCustomColumn.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_GetCustomColumnExpression": {
+            "main": "./lib/actions/Importation_GetCustomColumnExpression.js",
+            "title": "Get the encrypted custom column expression in this importation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_GetCustomColumnExpression.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_MapCustomColumn": {
+            "main": "./lib/actions/Importation_MapCustomColumn.js",
+            "title": "Map custom column to a BeezUP column",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_MapCustomColumn.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_UnmapCustomColumn": {
+            "main": "./lib/actions/Importation_UnmapCustomColumn.js",
+            "title": "Unmap custom column",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_UnmapCustomColumn.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_GetProductSample": {
+            "main": "./lib/actions/Importation_GetProductSample.js",
+            "title": "Get the product sample related to this importation with all columns (catalog and custom)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_GetProductSample.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_GetProductSampleCustomColumnValue": {
+            "main": "./lib/actions/Importation_GetProductSampleCustomColumnValue.js",
+            "title": "Get product sample custom column value related to this importation.",
+            "description": "/!\\ Use this operation only when you just changed the custom column expression and you want to get a precise the property value. Otherwise use the operation Importation_GetProductSample which will give you all property values",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_GetProductSampleCustomColumnValue.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_TechnicalProgression": {
+            "main": "./lib/actions/Importation_TechnicalProgression.js",
+            "title": "Get technical progression",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_TechnicalProgression.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Importation_GetManualUpdateLastInputConfig": {
+            "main": "./lib/actions/Importation_GetManualUpdateLastInputConfig.js",
+            "title": "Get the last input configuration",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Importation_GetManualUpdateLastInputConfig.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Catalog_GetProductBySku": {
+            "main": "./lib/actions/Catalog_GetProductBySku.js",
+            "title": "Get product by Sku",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Catalog_GetProductBySku.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Catalog_GetProducts": {
+            "main": "./lib/actions/Catalog_GetProducts.js",
+            "title": "Get product list",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Catalog_GetProducts.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Catalog_GetRandomProducts": {
+            "main": "./lib/actions/Catalog_GetRandomProducts.js",
+            "title": "Get random product list",
+            "description": "We will return 10 products randomly selected with all product values",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Catalog_GetRandomProducts.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Catalog_GetProductByProductId": {
+            "main": "./lib/actions/Catalog_GetProductByProductId.js",
+            "title": "Get product by ProductId",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Catalog_GetProductByProductId.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelCatalogs": {
+            "main": "./lib/actions/GetChannelCatalogs.js",
+            "title": "List all your current channel catalogs",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelCatalogs.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AddChannelCatalog": {
+            "main": "./lib/actions/AddChannelCatalog.js",
+            "title": "Add a new channel catalog",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AddChannelCatalog.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelCatalogExclusionFilterOperators": {
+            "main": "./lib/actions/GetChannelCatalogExclusionFilterOperators.js",
+            "title": "Get channel catalog exclusion filter operators",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelCatalogExclusionFilterOperators.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelCatalogProductByChannelCatalog": {
+            "main": "./lib/actions/GetChannelCatalogProductByChannelCatalog.js",
+            "title": "Get channel catalog products related to these channel catalogs",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelCatalogProductByChannelCatalog.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteChannelCatalog": {
+            "main": "./lib/actions/DeleteChannelCatalog.js",
+            "title": "Delete the channel catalog",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteChannelCatalog.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelCatalog": {
+            "main": "./lib/actions/GetChannelCatalog.js",
+            "title": "Get the channel catalog information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelCatalog.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelCatalogCategories": {
+            "main": "./lib/actions/GetChannelCatalogCategories.js",
+            "title": "Get channel catalog categories",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelCatalogCategories.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConfigureChannelCatalogCategory": {
+            "main": "./lib/actions/ConfigureChannelCatalogCategory.js",
+            "title": "Configure channel catalog category",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConfigureChannelCatalogCategory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DisableChannelCatalogCategoryMapping": {
+            "main": "./lib/actions/DisableChannelCatalogCategoryMapping.js",
+            "title": "Disable a channel catalog category mapping",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DisableChannelCatalogCategoryMapping.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ReenableChannelCatalogCategoryMapping": {
+            "main": "./lib/actions/ReenableChannelCatalogCategoryMapping.js",
+            "title": "Reenable a channel catalog category mapping",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ReenableChannelCatalogCategoryMapping.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConfigureChannelCatalogColumnMappings": {
+            "main": "./lib/actions/ConfigureChannelCatalogColumnMappings.js",
+            "title": "Configure channel catalog column mappings",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConfigureChannelCatalogColumnMappings.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DisableChannelCatalog": {
+            "main": "./lib/actions/DisableChannelCatalog.js",
+            "title": "Disable a channel catalog",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DisableChannelCatalog.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnableChannelCatalog": {
+            "main": "./lib/actions/EnableChannelCatalog.js",
+            "title": "Enable a channel catalog",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnableChannelCatalog.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelCatalogExclusionFilters": {
+            "main": "./lib/actions/GetChannelCatalogExclusionFilters.js",
+            "title": "Get channel catalog exclusion filters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelCatalogExclusionFilters.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConfigureChannelCatalogExclusionFilters": {
+            "main": "./lib/actions/ConfigureChannelCatalogExclusionFilters.js",
+            "title": "Configure channel catalog exclusion filters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConfigureChannelCatalogExclusionFilters.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelCatalogExportationCacheInfo": {
+            "main": "./lib/actions/GetChannelCatalogExportationCacheInfo.js",
+            "title": "Get the exportation cache information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelCatalogExportationCacheInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ClearChannelCatalogExportationCache": {
+            "main": "./lib/actions/ClearChannelCatalogExportationCache.js",
+            "title": "Clear the exportation cache",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ClearChannelCatalogExportationCache.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelCatalogExportationHistory": {
+            "main": "./lib/actions/GetChannelCatalogExportationHistory.js",
+            "title": "Get the exportation history",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelCatalogExportationHistory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelCatalogProductInfoList": {
+            "main": "./lib/actions/GetChannelCatalogProductInfoList.js",
+            "title": "Get channel catalog product information list",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelCatalogProductInfoList.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelCatalogProductsCounters": {
+            "main": "./lib/actions/GetChannelCatalogProductsCounters.js",
+            "title": "Get channel catalog products' counters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelCatalogProductsCounters.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ExportChannelCatalogProductInfoList": {
+            "main": "./lib/actions/ExportChannelCatalogProductInfoList.js",
+            "title": "Export channel catalog product information list",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ExportChannelCatalogProductInfoList.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelCatalogProductInfo": {
+            "main": "./lib/actions/GetChannelCatalogProductInfo.js",
+            "title": "Get channel catalog product information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelCatalogProductInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DisableChannelCatalogProduct": {
+            "main": "./lib/actions/DisableChannelCatalogProduct.js",
+            "title": "Disable channel catalog product",
+            "description": "By default a all your catalog products are exposed to the channel.\nYou can disable a product by using this operation.\n/!\\ In case of massive optimisation we recommand you to use the analytics api\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DisableChannelCatalogProduct.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "OverrideChannelCatalogProductValues": {
+            "main": "./lib/actions/OverrideChannelCatalogProductValues.js",
+            "title": "Override channel catalog product values",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/OverrideChannelCatalogProductValues.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelCatalogProductValueOverrideCopy": {
+            "main": "./lib/actions/GetChannelCatalogProductValueOverrideCopy.js",
+            "title": "Get channel catalog product value override compatibilities status",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelCatalogProductValueOverrideCopy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConfigureChannelCatalogProductValueOverrideCopy": {
+            "main": "./lib/actions/ConfigureChannelCatalogProductValueOverrideCopy.js",
+            "title": "Copy channel catalog product value override",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConfigureChannelCatalogProductValueOverrideCopy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteChannelCatalogProductValueOverride": {
+            "main": "./lib/actions/DeleteChannelCatalogProductValueOverride.js",
+            "title": "Delete a specific channel catalog product value override",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteChannelCatalogProductValueOverride.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ReenableChannelCatalogProduct": {
+            "main": "./lib/actions/ReenableChannelCatalogProduct.js",
+            "title": "Reenable channel catalog product",
+            "description": "By default a all your catalog products are exposed to the channel.\nYou can reenable a product by using this operation.\n/!\\ In case of massive optimisation we recommand you to use the analytics api\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ReenableChannelCatalogProduct.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConfigureChannelCatalogCostSettings": {
+            "main": "./lib/actions/ConfigureChannelCatalogCostSettings.js",
+            "title": "Configure channel catalog cost settings",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConfigureChannelCatalogCostSettings.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConfigureChannelCatalogGeneralSettings": {
+            "main": "./lib/actions/ConfigureChannelCatalogGeneralSettings.js",
+            "title": "Configure channel catalog general settings",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConfigureChannelCatalogGeneralSettings.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetAvailableChannels": {
+            "main": "./lib/actions/GetAvailableChannels.js",
+            "title": "List all available channel for this store",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetAvailableChannels.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelInfo": {
+            "main": "./lib/actions/GetChannelInfo.js",
+            "title": "Get channel information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelCategories": {
+            "main": "./lib/actions/GetChannelCategories.js",
+            "title": "Get channel categories",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelCategories.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelColumns": {
+            "main": "./lib/actions/GetChannelColumns.js",
+            "title": "Get channel columns",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelColumns.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetCustomerIndex": {
+            "main": "./lib/actions/GetCustomerIndex.js",
+            "title": "The index of all operations and LOV",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetCustomerIndex.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetUserAccountInfo": {
+            "main": "./lib/actions/GetUserAccountInfo.js",
+            "title": "Get user account information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetUserAccountInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ActivateUserAccount": {
+            "main": "./lib/actions/ActivateUserAccount.js",
+            "title": "Activate the user account",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActivateUserAccount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ChangePassword": {
+            "main": "./lib/actions/ChangePassword.js",
+            "title": "Change user password",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ChangePassword.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SaveCompanyInfo": {
+            "main": "./lib/actions/SaveCompanyInfo.js",
+            "title": "Change company information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SaveCompanyInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetCreditCardInfo": {
+            "main": "./lib/actions/GetCreditCardInfo.js",
+            "title": "Get credit card information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetCreditCardInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SaveCreditCardInfo": {
+            "main": "./lib/actions/SaveCreditCardInfo.js",
+            "title": "Save user credit card info",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SaveCreditCardInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SavePersonalInfo": {
+            "main": "./lib/actions/SavePersonalInfo.js",
+            "title": "Save user personal information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SavePersonalInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetProfilePictureInfo": {
+            "main": "./lib/actions/GetProfilePictureInfo.js",
+            "title": "Get profile picture information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetProfilePictureInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SaveProfilePictureInfo": {
+            "main": "./lib/actions/SaveProfilePictureInfo.js",
+            "title": "Change user picture information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SaveProfilePictureInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ResendEmailActivation": {
+            "main": "./lib/actions/ResendEmailActivation.js",
+            "title": "Resend email activation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ResendEmailActivation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetBillingPeriods": {
+            "main": "./lib/actions/GetBillingPeriods.js",
+            "title": "Get billing periods conditions",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetBillingPeriods.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetContracts": {
+            "main": "./lib/actions/GetContracts.js",
+            "title": "Get contract list",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetContracts.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateContract": {
+            "main": "./lib/actions/CreateContract.js",
+            "title": "Create a new contract",
+            "description": "Now you are ready to create your contract. Before that, please ensure that you check the offer with the same request parameterts. /offers\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateContract.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TerminateCurrentContract": {
+            "main": "./lib/actions/TerminateCurrentContract.js",
+            "title": "Schedule termination of your current contract at the end of the commitment.",
+            "description": "By default your contract are automatically renew. By calling this operation you can disable the auto renewal.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TerminateCurrentContract.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ReactivateCurrentContract": {
+            "main": "./lib/actions/ReactivateCurrentContract.js",
+            "title": "Reactivate your terminated contract.",
+            "description": "By calling this operation you can re-enable the auto renewal.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ReactivateCurrentContract.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteNextContract": {
+            "main": "./lib/actions/DeleteNextContract.js",
+            "title": "Delete your next contract",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteNextContract.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetFriendInfo": {
+            "main": "./lib/actions/GetFriendInfo.js",
+            "title": "Get friend information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetFriendInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetInvoices": {
+            "main": "./lib/actions/GetInvoices.js",
+            "title": "Get all your invoices",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetInvoices.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetStandardOffers": {
+            "main": "./lib/actions/GetStandardOffers.js",
+            "title": "Get all standard offers",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetStandardOffers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetOffer": {
+            "main": "./lib/actions/GetOffer.js",
+            "title": "Get offer pricing",
+            "description": "Get the offer pricing then you can create your contract with the same request parameters. /v2/user/customer/contracts\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetOffer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Logout": {
+            "main": "./lib/actions/Logout.js",
+            "title": "Log out the current user from go2",
+            "description": "Log out the current user from go2",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Logout.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetStores": {
+            "main": "./lib/actions/GetStores.js",
+            "title": "Get store list",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetStores.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateStore": {
+            "main": "./lib/actions/CreateStore.js",
+            "title": "Create a new store",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateStore.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteStore": {
+            "main": "./lib/actions/DeleteStore.js",
+            "title": "Delete a store",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteStore.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetStore": {
+            "main": "./lib/actions/GetStore.js",
+            "title": "Get store's information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetStore.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateStore": {
+            "main": "./lib/actions/UpdateStore.js",
+            "title": "Update some store's information.",
+            "description": "Update some store's information. FYI, you cannot change the country.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateStore.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetStoreAlerts": {
+            "main": "./lib/actions/GetStoreAlerts.js",
+            "title": "Get store's alerts",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetStoreAlerts.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SaveStoreAlerts": {
+            "main": "./lib/actions/SaveStoreAlerts.js",
+            "title": "Save store alerts",
+            "description": "You just have to send the alert you want to update, does not need all alerts. (PARTIAL UPDATE ACCEPTED)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SaveStoreAlerts.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetRights": {
+            "main": "./lib/actions/GetRights.js",
+            "title": "Get store's rights",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetRights.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetStoreShares": {
+            "main": "./lib/actions/GetStoreShares.js",
+            "title": "Get shares related to this store",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetStoreShares.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ShareStore": {
+            "main": "./lib/actions/ShareStore.js",
+            "title": "Share a store to another user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ShareStore.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteStoreShare": {
+            "main": "./lib/actions/DeleteStoreShare.js",
+            "title": "Delete a share of a store to another user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteStoreShare.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetUserLovIndex": {
+            "main": "./lib/actions/GetUserLovIndex.js",
+            "title": "Get all list names",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetUserLovIndex.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetUserListOfValues": {
+            "main": "./lib/actions/GetUserListOfValues.js",
+            "title": "Get the list of values related to this list name",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetUserListOfValues.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetMarketplaceChannelCatalogs": {
+            "main": "./lib/actions/GetMarketplaceChannelCatalogs.js",
+            "title": "Get your marketplace channel catalog list",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetMarketplaceChannelCatalogs.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetPublications": {
+            "main": "./lib/actions/GetPublications.js",
+            "title": "Fetch the publication history for an account, sorted by descending start date",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetPublications.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelCatalogMarketplaceProperties": {
+            "main": "./lib/actions/GetChannelCatalogMarketplaceProperties.js",
+            "title": "Get the marketplace properties for a channel catalog",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelCatalogMarketplaceProperties.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChannelCatalogMarketplaceSettings": {
+            "main": "./lib/actions/GetChannelCatalogMarketplaceSettings.js",
+            "title": "Get the marketplace settings for a channel catalog",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChannelCatalogMarketplaceSettings.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SetChannelCatalogMarketplaceSettings": {
+            "main": "./lib/actions/SetChannelCatalogMarketplaceSettings.js",
+            "title": "Save new marketplace settings for a channel catalog",
+            "description": "Allow you to configure your marketplace settings.\nPartial update accepted.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SetChannelCatalogMarketplaceSettings.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetOrderIndex": {
+            "main": "./lib/actions/GetOrderIndex.js",
+            "title": "Get all actions you can do on the order API",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetOrderIndex.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetAutomaticTransitions": {
+            "main": "./lib/actions/GetAutomaticTransitions.js",
+            "title": "Get list of configured automatic Order status transitions",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetAutomaticTransitions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConfigureAutomaticTransitions": {
+            "main": "./lib/actions/ConfigureAutomaticTransitions.js",
+            "title": "Configure new or existing automatic Order status transition",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConfigureAutomaticTransitions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ChangeOrderList": {
+            "main": "./lib/actions/ChangeOrderList.js",
+            "title": "Send a batch of operations to change your marketplace Order information (accept, ship, etc.)",
+            "description": "The purpose of this operation is to reduce the amount of request to the API.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ChangeOrderList.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ClearMerchantOrderInfoList": {
+            "main": "./lib/actions/ClearMerchantOrderInfoList.js",
+            "title": "Send a batch of operations to clear an Order's merchant information (max 100 items per call)",
+            "description": "The purpose of this operation is to reduce the amount of request to the API.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ClearMerchantOrderInfoList.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SetMerchantOrderInfoList": {
+            "main": "./lib/actions/SetMerchantOrderInfoList.js",
+            "title": "Send a batch of operations to set an Order's merchant information  (max 100 items per call)",
+            "description": "The purpose of this operation is to reduce the amount of request to the API.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SetMerchantOrderInfoList.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetOrderExportations": {
+            "main": "./lib/actions/GetOrderExportations.js",
+            "title": "Get a paginated list of Order report exportations",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetOrderExportations.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ExportOrders": {
+            "main": "./lib/actions/ExportOrders.js",
+            "title": "Request a new Order report exportation to be generated",
+            "description": "A new file will be generated containing a summary of all the Orders matching the requested filter settings.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ExportOrders.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "HarvestAll": {
+            "main": "./lib/actions/HarvestAll.js",
+            "title": "Send harvest request to all your marketplaces",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/HarvestAll.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetOrderListFull": {
+            "main": "./lib/actions/GetOrderListFull.js",
+            "title": "Get a paginated list of all Orders with all Order and Order Item(s) properties",
+            "description": "The purpose of this operation is to reduce the amount of request to the API.\\\n\\\nPrevious implmentation of this feature only returned a partial (light) version of the Orders. The purpose of this API is to reduce the number of incoming requests by returning the complete (full) Order and Order Item(s) properties.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetOrderListFull.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetOrderListLight": {
+            "main": "./lib/actions/GetOrderListLight.js",
+            "title": "Get a paginated list of all Orders without details",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetOrderListLight.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetMarketplaceAccountsSynchronization": {
+            "main": "./lib/actions/GetMarketplaceAccountsSynchronization.js",
+            "title": "Get current synchronization status between your marketplaces and BeezUP accounts",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetMarketplaceAccountsSynchronization.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetOrder": {
+            "main": "./lib/actions/GetOrder.js",
+            "title": "Get full Order and Order Item(s) properties",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetOrder.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "HeadOrder": {
+            "main": "./lib/actions/HeadOrder.js",
+            "title": "Get the meta information about the order (ETag, Last-Modified)",
+            "description": "The purpose of this operation is to reduce the bandwith usage by getting just the meta information about the order (ETag, Last-Modified) with the body.\nThis could be useful\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/HeadOrder.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ClearMerchantOrderInfo": {
+            "main": "./lib/actions/ClearMerchantOrderInfo.js",
+            "title": "Clear an Order's merchant information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ClearMerchantOrderInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "HarvestOrder": {
+            "main": "./lib/actions/HarvestOrder.js",
+            "title": "Send harvest request for a single Order",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/HarvestOrder.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetOrderHistory": {
+            "main": "./lib/actions/GetOrderHistory.js",
+            "title": "Get an Order's harvest and change history",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetOrderHistory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SetMerchantOrderInfo": {
+            "main": "./lib/actions/SetMerchantOrderInfo.js",
+            "title": "Set an Order's merchant information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SetMerchantOrderInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ChangeOrder": {
+            "main": "./lib/actions/ChangeOrder.js",
+            "title": "Change your marketplace Order Information (accept, ship, etc.)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ChangeOrder.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

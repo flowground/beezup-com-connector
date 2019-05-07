@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "commercialOwnerUserId": {
+                    "description": "The user id of your commercial in BeezUP.",
+                    "example": "47ea14ab-195d-4f9a-a24e-32c329ee40f6",
+                    "format": "uuid",
+                    "type": "string"
+                },
+                "cultureName": {
+                    "description": "Can be null. Default: en-GB. The culture name you want to use. FYI. \\\nThe email activation will use this culture.\n",
+                    "example": "en-GB",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "Your email. We refuse disposable email.",
+                    "example": "myemail@mycompany.com",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "The password you want to use for your new account. \\\nThe password length must be greater or equals to 6 and lower or equals to 128. \\\nThe password must contains at least one number and one special character\n",
+                    "example": "I@mW0nder$Full",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "email",
+                "password"
+            ],
+            "type": "object"
+        }
+    }
+}

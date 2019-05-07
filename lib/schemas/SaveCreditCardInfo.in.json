@@ -1,0 +1,42 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "cardNumber": {
+                    "description": "Card number",
+                    "example": 1234567890091234,
+                    "type": "string"
+                },
+                "cardVerificationCode": {
+                    "description": "Card Verification Code",
+                    "example": 123,
+                    "type": "string"
+                },
+                "expirationMonth": {
+                    "description": "Expiration Month",
+                    "example": 12,
+                    "format": "int32",
+                    "maximum": 12,
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "expirationYear": {
+                    "description": "Expiration Year",
+                    "example": 2017,
+                    "format": "int32",
+                    "maximum": 9000,
+                    "minimum": 2017,
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "cardNumber",
+                "cardVerificationCode",
+                "expirationMonth",
+                "expirationYear"
+            ],
+            "type": "object"
+        }
+    }
+}

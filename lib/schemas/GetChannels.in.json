@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "countryIsoCode": {
+            "required": true,
+            "type": "string"
+        },
+        "Accept_Encoding": {
+            "required": true,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "If_None_Match": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

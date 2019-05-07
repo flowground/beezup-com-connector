@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": false,
+            "type": "string",
+            "format": "guid"
+        },
+        "If_None_Match": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

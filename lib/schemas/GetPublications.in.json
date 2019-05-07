@@ -1,0 +1,40 @@
+{
+    "type": "object",
+    "properties": {
+        "marketplaceTechnicalCode": {
+            "required": true,
+            "type": "string"
+        },
+        "accountId": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        },
+        "channelCatalogId": {
+            "required": false,
+            "type": "string",
+            "format": "guid"
+        },
+        "count": {
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "minimum": 10,
+            "maximum": 100,
+            "default": 10
+        },
+        "publicationTypes": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "enum": [
+                    "PublishProducts",
+                    "PublishOffers",
+                    "Unpublish"
+                ],
+                "format": "publicationType",
+                "type": "string"
+            }
+        }
+    }
+}

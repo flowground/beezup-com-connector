@@ -1,0 +1,43 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "beezUPTimeZoneId": {
+                    "description": "The time zone identifier based on the list of values /v2/user/lov/BeezUPTimeZone",
+                    "example": 79,
+                    "format": "int32",
+                    "type": "integer",
+                    "x-lov": "BeezUPTimeZone"
+                },
+                "firstName": {
+                    "description": "Your first name",
+                    "example": "Paul",
+                    "type": "string"
+                },
+                "lastName": {
+                    "description": "Your last name",
+                    "example": "Simon",
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "description": "Your phone number",
+                    "example": 5551234,
+                    "type": "string"
+                },
+                "whatIDo": {
+                    "description": "Your role in your company",
+                    "example": "I'm the Manager on this company",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName",
+                "phoneNumber",
+                "beezUPTimeZoneId"
+            ],
+            "type": "object"
+        }
+    }
+}

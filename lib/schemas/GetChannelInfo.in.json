@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "channelId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        }
+    }
+}

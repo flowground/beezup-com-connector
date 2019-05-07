@@ -1,0 +1,57 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "requestBody": {
+            "additionalProperties": {
+                "properties": {
+                    "enabled": {
+                        "description": "Is the alert enable ?",
+                        "example": true,
+                        "type": "boolean"
+                    },
+                    "properties": {
+                        "description": "Properties to configure the alert",
+                        "example": [
+                            {
+                                "propertyId": 2,
+                                "propertyValue": "3"
+                            }
+                        ],
+                        "items": {
+                            "properties": {
+                                "propertyId": {
+                                    "description": "The property identifier of the alert",
+                                    "example": 2,
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "propertyValue": {
+                                    "description": "The property value",
+                                    "example": "2",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "propertyId",
+                                "propertyValue"
+                            ],
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "enabled"
+                ],
+                "type": "object"
+            },
+            "description": "The key is the alert identifier (alertId)",
+            "type": "object"
+        }
+    }
+}

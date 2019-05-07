@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "The contract termination info",
+            "properties": {
+                "contractTerminationReason": {
+                    "description": "The termination reason, if your current contract is scheduled to be terminated.",
+                    "example": "I'm crazy, I want to leave your splendid service...",
+                    "type": "string"
+                },
+                "contractTerminationReasonType": {
+                    "description": "The contract termination reason type identifier, if your current contract is scheduled to be terminated. The value is based on the list of values /user/lov/ContractTerminationReason",
+                    "example": 1,
+                    "format": "int32",
+                    "type": "integer",
+                    "x-lov": "ContractTerminationReason"
+                }
+            },
+            "required": [
+                "contractTerminationReasonType"
+            ],
+            "type": "object"
+        }
+    }
+}

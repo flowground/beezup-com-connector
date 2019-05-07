@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "listName": {
+            "required": true,
+            "type": "string"
+        },
+        "Accept_Language": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "If_None_Match": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

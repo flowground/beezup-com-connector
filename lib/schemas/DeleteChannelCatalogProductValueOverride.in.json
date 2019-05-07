@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "channelCatalogId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "productId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "channelColumnId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        }
+    }
+}

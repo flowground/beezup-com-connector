@@ -1,0 +1,37 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "channelCatalogIds": {
+                    "description": "The list of channel catalog identifier",
+                    "items": {
+                        "description": "The channel catalog identifier",
+                        "example": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0",
+                        "format": "guid",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "productId": {
+                    "description": "The product identifier",
+                    "example": "578419df-1bbf-41a6-96fa-862e42182b67",
+                    "format": "guid",
+                    "type": "string"
+                },
+                "storeId": {
+                    "description": "The store identifier",
+                    "example": "64f43358-63a1-47f7-97ec-0301fc39956b",
+                    "format": "guid",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "storeId",
+                "productId",
+                "channelCatalogIds"
+            ],
+            "type": "object"
+        }
+    }
+}

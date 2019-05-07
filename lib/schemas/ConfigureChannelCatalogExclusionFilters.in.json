@@ -1,0 +1,76 @@
+{
+    "type": "object",
+    "properties": {
+        "channelCatalogId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "requestBody": {
+            "description": "The exclusion filter list",
+            "items": {
+                "description": "The exclusion filter",
+                "properties": {
+                    "channelColumnId": {
+                        "description": "The channel column identifier",
+                        "example": "8a76f06a-fefc-4c0d-bcfe-b210f1482977",
+                        "format": "guid",
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "description": "indicates if the filter is currently enable.",
+                        "example": true,
+                        "type": "boolean"
+                    },
+                    "groupId": {
+                        "description": "Indicate the filter's group. All filters in the same group means an \"AND\" operation in the filter group",
+                        "example": "d9833f4b-718a-436f-bab5-89da3d21bf60",
+                        "format": "guid",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The exclusion filter name",
+                        "example": "Exclude sony products",
+                        "type": "string"
+                    },
+                    "operatorName": {
+                        "description": "The exclusion filter operator name",
+                        "example": "Contains",
+                        "type": "string",
+                        "x-lov": "ChannelCatalogExclusionFilterOperator"
+                    },
+                    "position": {
+                        "description": "The position of the exclusion filter",
+                        "example": 1,
+                        "format": "int32",
+                        "minimum": 1,
+                        "type": "integer"
+                    },
+                    "positionInGroup": {
+                        "description": "Indicate the filter group position. This information is used for the UI purpose and must be unique in the filter group.",
+                        "example": 1,
+                        "format": "int32",
+                        "minimum": 1,
+                        "type": "integer"
+                    },
+                    "value": {
+                        "description": "The value indicate by the user when the filter operation requires it.",
+                        "example": "sony",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name",
+                    "position",
+                    "groupId",
+                    "positionInGroup",
+                    "channelColumnId",
+                    "operatorName",
+                    "enabled"
+                ],
+                "type": "object"
+            },
+            "type": "array"
+        }
+    }
+}

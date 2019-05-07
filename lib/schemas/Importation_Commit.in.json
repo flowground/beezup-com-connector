@@ -1,0 +1,15 @@
+{
+    "type": "object",
+    "properties": {
+        "storeId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        },
+        "executionId": {
+            "required": true,
+            "type": "string",
+            "format": "guid"
+        }
+    }
+}

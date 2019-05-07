@@ -1,0 +1,161 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "allOf": [
+                {
+                    "properties": {
+                        "accountIds": {
+                            "description": "Account Id list",
+                            "example": [
+                                12345
+                            ],
+                            "items": {
+                                "description": "The marketplace account identifier in BeezUP. This account identifier is based on your api settings.",
+                                "example": 1234,
+                                "format": "int32",
+                                "type": "integer"
+                            },
+                            "type": "array"
+                        },
+                        "beezUPOrderStatuses": {
+                            "example": [
+                                "InProgress"
+                            ],
+                            "items": {
+                                "description": "BeezUP order status. Unified for all marketplaces.",
+                                "example": "Shipped",
+                                "type": "string",
+                                "x-lov": "BeezUPOrderState"
+                            },
+                            "type": "array"
+                        },
+                        "beginPeriodUtcDate": {
+                            "description": "The begin period you want to make the search. \\\nThe period MUST not be greater than 30 days.\nThe begin period MUST be lower than the end period.\n",
+                            "example": "2017-03-01T13:10:01Z",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "dateSearchType": {
+                            "default": "Modification",
+                            "description": "Indicates on which date you want to make the filter",
+                            "enum": [
+                                "Purchase",
+                                "Modification",
+                                "MarketPlaceModification"
+                            ],
+                            "type": "string"
+                        },
+                        "endPeriodUtcDate": {
+                            "description": "The end period of you search. \\\nThe period MUST not be greater than 30 days. \\\nThe end period MUST be greater than the begin period.\nThe end period MUST be lower to the current date.\n",
+                            "example": "2017-04-01T13:10:01Z",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "marketplaceBusinessCodes": {
+                            "example": [
+                                "PRICEMINISTER"
+                            ],
+                            "items": {
+                                "description": "In an marketplace technical code like CDiscount you can have several marketplaces like GO SPORT, etc. We identify them by a business code.",
+                                "example": "GOSPORT",
+                                "type": "string",
+                                "x-lov": "MarketplaceBusinessCode"
+                            },
+                            "type": "array"
+                        },
+                        "marketplaceOrderIds": {
+                            "example": [
+                                "AmazonOrderId1234"
+                            ],
+                            "items": {
+                                "description": "The order marketplace identifier",
+                                "example": "AMAZON12345",
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "marketplaceTechnicalCodes": {
+                            "example": [
+                                "PriceMinister"
+                            ],
+                            "items": {
+                                "description": "The technical code of the marketplace.",
+                                "example": "Amazon",
+                                "type": "string",
+                                "x-lov": "OMMarketplaceTechnicalCode"
+                            },
+                            "type": "array"
+                        },
+                        "order_Buyer_Name": {
+                            "description": "Buyer full name",
+                            "example": "Monroe",
+                            "type": "string"
+                        },
+                        "order_MerchantOrderIds": {
+                            "description": "Merchant order id list",
+                            "example": [
+                                "MyOrderId1234"
+                            ],
+                            "items": {
+                                "description": "The order merchant identifier",
+                                "example": "MyOrderMerchantId",
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "storeIds": {
+                            "description": "Store Id list",
+                            "items": {
+                                "description": "The store identifier",
+                                "example": "64f43358-63a1-47f7-97ec-0301fc39956b",
+                                "format": "guid",
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "required": [
+                        "dateSearchType",
+                        "beginPeriodUtcDate",
+                        "endPeriodUtcDate"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "pageNumber": {
+                            "default": 1,
+                            "description": "Indicates the page number",
+                            "example": 1,
+                            "format": "int32",
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        "pageSize": {
+                            "default": 100,
+                            "description": "Indicate the order count per page",
+                            "example": 100,
+                            "format": "int32",
+                            "maximum": 100,
+                            "minimum": 25,
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "pageSize",
+                        "pageNumber"
+                    ],
+                    "type": "object"
+                }
+            ]
+        },
+        "Accept_Encoding": {
+            "required": true,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}
